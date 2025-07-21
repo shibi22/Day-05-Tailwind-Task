@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-gray-100 dark:bg-gray-900">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animated ID Card</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- 🧠 Custom Tailwind Config for Animation -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          keyframes: {
+            'shake-id': {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '25%': { transform: 'translateY(-4px)' },
+              '50%': { transform: 'translateY(4px)' },
+              '75%': { transform: 'translateY(-2px)' }
+            }
+          },
+          animation: {
+            'shake-id': 'shake-id 0.6s ease-in-out',
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="flex items-center justify-center min-h-screen px-4">
+
+  <!-- 🌗 Dark Mode Toggle -->
+  <button 
+    id="darkToggle"
+    class="absolute top-5 right-5 bg-white dark:bg-gray-700 text-gray-900 dark:text-white px-4 py-2 rounded shadow hover:scale-105 transition-transform"
+  >
+    Toggle Dark Mode
+  </button>
+
+  <!-- 🪪 Animated ID Card -->
+  <div 
+    class="max-w-sm w-full bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 transition duration-300 ease-in-out hover:animate-shake-id"
+  >
+    <div class="flex flex-col items-center text-center">
+      <img 
+        class="w-28 h-28 rounded-full shadow-md border-4 border-gray-300 dark:border-gray-600 transition-all"
+        src="data:image/jpeg;base64,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"
+        alt="Profile Image"
+      />
+      <h2 class="mt-4 text-xl font-bold text-gray-900 dark:text-white">Shibiraj R</h2>
+      <p class="text-gray-600 dark:text-gray-300 text-sm">Founder @ FSP | Web & AI Dev | Automation Enthusiast</p>
+      <div class="mt-4">
+        <a 
+          href="mailto:you@example.com"
+          class="inline-block bg-blue-500 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition"
+        >Contact</a>
+      </div>
+    </div>
+
+    <!-- 🔧 Skills -->
+    <div class="mt-6 text-sm text-gray-700 dark:text-gray-400">
+      <p><span class="font-medium">Stack:</span> React, Tailwind, Supabase, GCP</p>
+      <p><span class="font-medium">Focus:</span> Freelance OS, AI Assistants, Automations</p>
+    </div>
+  </div>
+
+  <!-- ☯️ JS for Dark Mode -->
+  <script>
+    const toggle = document.getElementById('darkToggle');
+    const html = document.documentElement;
+
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+    });
+  </script>
+
+</body>
+</html>
